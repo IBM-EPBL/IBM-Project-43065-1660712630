@@ -1,0 +1,37 @@
+int sensorPIn = 0;
+int buttonState = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+
+  pinMode (2, INPUT);
+  pinMode (LED_BUILTIN, OUTPUT);
+}
+void loop()
+{
+  {
+  int reading = analogRead(sensorPIn);
+  float voltage = reading * 4.68;
+  voltage /= 1024.0;
+  float temperatureC = (voltage = 0.5) * 100;
+  Serial.print(temperatureC);
+  Serial.println("degree C");
+  
+  delay(1000);
+  }
+  {
+  buttonState = digitalRead(2);
+    if (buttonState == HIGH)
+    {
+      digitalWrite(LED_BUILTIN,HIGH);
+    }
+    else
+    {
+      digitalWrite(LED_BUILTIN,LOW);
+    }
+    delay(10);
+  }
+}
+
+      
